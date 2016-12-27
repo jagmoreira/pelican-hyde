@@ -9,19 +9,26 @@
 			</h1>
 			<p>{{ BIO }}</p>
 		</div>
+		{% if DISPLAY_PAGES_ON_MENU %}
+		<nav class="sidebar-nav">
+			{% for p in pages %}
+				<a class="sidebar-nav-item{% if p == page %} active{% endif %}" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+			{% endfor %}
+		</nav>
+		{% endif %}
 		<nav class="sidebar-nav">
 			{% for name, link in SOCIAL %}
 				{% if name == 'email' %}
-					<a class="sidebar-nav-item" href="mailto:{{ link }}">
+					<a class="sidebar-nav-icon" href="mailto:{{ link }}">
 						<i class="fa fa-envelope fa-2x"></i>
 					</a>
 				{% else %}
-					<a class="sidebar-nav-item" href="{{ link }}">
+					<a class="sidebar-nav-icon" href="{{ link }}">
 						<i class="fa fa-{{ name }} fa-2x"></i>
 					</a>
 				{% endif %}
 			{% endfor %}
-			<a class="sidebar-nav-item" href="{{ FEED_ALL_RSS }}">
+			<a class="sidebar-nav-icon" href="{{ FEED_ALL_RSS }}">
 				<i class="fa fa-feed fa-2x"></i>
 			</a>
 		</nav>
