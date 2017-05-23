@@ -55,9 +55,11 @@
 					</a>
 				{% endif %}
 			{% endfor %}
-			<a class="sidebar-nav-icon" href="{{ FEED_ALL_RSS }}">
-				<i class="fa fa-feed fa-2x"></i>
-			</a>
+			{% if FEED_ALL_ATOM %}
+				<a class="sidebar-nav-icon" rel="alternate" type="application/atom+xml" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}">
+					<i class="fa fa-feed fa-2x"></i>
+				</a>
+			{% endif %}
 		</nav>
 	</div>
 </div>

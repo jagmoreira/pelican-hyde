@@ -14,13 +14,30 @@
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
 		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
 
-		<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/poole.css" />
-		<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/hyde.css" />
-		<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/syntax.css" />
+		<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/poole.css">
+		<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/hyde.css">
+		<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/syntax.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-		<!-- RSS -->
-		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+		<!-- RSS and ATOM feeds -->
+		{% if FEED_ALL_ATOM %}
+			<link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} Atom Feed" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}">
+        {% endif %}
+        {% if FEED_ALL_RSS %}
+        	<link rel="alternate" type="application/rss+xml" title="{{ SITENAME }} RSS Feed" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}">
+        {% endif %}
+        {% if CATEGORY_FEED_ATOM and category %}
+        	<link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} Categories Atom Feed" href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM|format(category.slug) }}">
+        {% endif %}
+        {% if CATEGORY_FEED_RSS and category %}
+        	<link rel="alternate" type="application/rss+xml" title="{{ SITENAME }} Categories RSS Feed" href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS|format(category.slug) }}">
+        {% endif %}
+        {% if TAG_FEED_ATOM and tag %}
+        	<link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} Tags Atom Feed" href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM|format(tag.slug) }}">
+        {% endif %}
+        {% if TAG_FEED_RSS and tag %}
+        	<link rel="alternate" type="application/rss+xml" title="{{ SITENAME }} Tags RSS Feed" href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}">
+		{% endif %}
 		{% include 'fragments/google_analytics.html' %}
 	</head>
 
