@@ -3,7 +3,9 @@
 		<div class="sidebar-about">
 			<h1>
 				<a href="/">
-					<img class="profile-picture" src="{{ SITEURL }}/images/{{ PROFILE_IMAGE }}">
+					{% if PROFILE_IMAGE %}
+						<img class="profile-picture" src="{{ SITEURL }}/images/{{ PROFILE_IMAGE }}">
+					{% endif %}
 					{{ SITENAME }}
 				</a>
 			</h1>
