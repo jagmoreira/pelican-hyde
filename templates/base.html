@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
-	<head>
-		<link href="//gmpg.org/xfn/11" rel="profile">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <head>
+        <link href="//gmpg.org/xfn/11" rel="profile">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-		<!-- Enable responsiveness on mobile devices-->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Enable responsiveness on mobile devices-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>{% block title %}{{ SITENAME }}{% endblock title %}{% if SITESUBTITLE %} - {{ SITESUBTITLE }}{% endif %}</title>
+        <title>{% block title %}{{ SITENAME }}{% endblock title %}{% if SITESUBTITLE %} - {{ SITESUBTITLE }}{% endif %}</title>
 
-		<!-- CSS -->
-		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
-		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
-		{% assets filters="cssmin", output="css/style.min.css", "css/poole.css", "css/hyde.css", "css/syntax.css" %}
-		<link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
-		{% endassets %}
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <!-- CSS -->
+        <link href="//fonts.googleapis.com/" rel="dns-prefetch">
+        <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+        {% assets filters="cssmin", output="css/style.min.css", "css/poole.css", "css/hyde.css", "css/syntax.css" %}
+        <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
+        {% endassets %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
         <!-- Icons -->
         {% if FAVICON %}
-        <link rel="icon" href="{{ SITEURL }}/{{ FAVICON }}" type="image/png">
+            <link rel="icon" href="{{ SITEURL }}/{{ FAVICON }}" type="image/png">
         {% endif %}
         {% if APPLE_ICON %}
-        <link rel="apple-touch-icon" href="{{ SITEURL }}/{{ APPLE_ICON }}">
+            <link rel="apple-touch-icon" href="{{ SITEURL }}/{{ APPLE_ICON }}">
         {% endif %}
 
-		<!-- RSS and ATOM feeds -->
-		{% if FEED_ALL_ATOM %}
-			<link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} Atom Feed" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}">
+        <!-- RSS and ATOM feeds -->
+        {% if FEED_ALL_ATOM %}
+            <link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} Atom Feed" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}">
         {% endif %}
         {% if FEED_ALL_RSS %}
-        	<link rel="alternate" type="application/rss+xml" title="{{ SITENAME }} RSS Feed" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}">
+            <link rel="alternate" type="application/rss+xml" title="{{ SITENAME }} RSS Feed" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}">
         {% endif %}
         {% if CATEGORY_FEED_ATOM and category %}
-        	<link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} Categories Atom Feed" href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM|format(category.slug) }}">
+            <link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} Categories Atom Feed" href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM|format(slug=category.slug) }}">
         {% endif %}
         {% if CATEGORY_FEED_RSS and category %}
-        	<link rel="alternate" type="application/rss+xml" title="{{ SITENAME }} Categories RSS Feed" href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS|format(category.slug) }}">
+            <link rel="alternate" type="application/rss+xml" title="{{ SITENAME }} Categories RSS Feed" href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS|format(slug=category.slug) }}">
         {% endif %}
         {% if TAG_FEED_ATOM and tag %}
-        	<link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} Tags Atom Feed" href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM|format(tag.slug) }}">
+            <link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} Tags Atom Feed" href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM|format(slug=tag.slug) }}">
         {% endif %}
         {% if TAG_FEED_RSS and tag %}
-        	<link rel="alternate" type="application/rss+xml" title="{{ SITENAME }} Tags RSS Feed" href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}">
-		{% endif %}
-		{% include 'fragments/google_analytics.html' %}
-	</head>
+            <link rel="alternate" type="application/rss+xml" title="{{ SITENAME }} Tags RSS Feed" href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(slug=tag.slug) }}">
+        {% endif %}
+        {% include 'fragments/google_analytics.html' %}
+    </head>
 
-	<body class="theme-base-0f">
-		{% include 'sidebar.html' %}
-		<div class="content container">
-			<div class="post">
-				{% block content_title %}{% endblock %}
-				{% block content %}{% endblock %}
-			</div>
-		</div>
-	</body>
+    <body class="theme-base-0f">
+        {% include 'sidebar.html' %}
+        <div class="content container">
+            <div class="post">
+                {% block content_title %}{% endblock %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </body>
 </html>
